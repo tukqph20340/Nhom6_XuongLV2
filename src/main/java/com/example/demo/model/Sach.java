@@ -44,15 +44,19 @@ public class Sach {
     private String tieuDe;
 
 
-    @Column(name = "so_luong")
-    private Integer diaChi;
-
 
     @Column(name = "ngay_xuat_ban")
     private String ngaySatBan;
 
-    @Column(name = "gia")
-    private Double email;
+    @Column(name = "gia_nhap")
+    private Double giaNhap;
+
+    @Column(name = "gia_ban")
+    private Double giaBan;
+
+    @Column(name = "so_luong")
+    private Integer soLuong;
+
 
     @Column(name = "trang_thai")
     private Integer trangThai;
