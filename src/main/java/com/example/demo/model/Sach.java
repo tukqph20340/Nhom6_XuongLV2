@@ -39,6 +39,10 @@ public class Sach {
     @JoinColumn(name = " id_nxb")
     private NhaXuatBan nhaXuatBan;
 
+    @ManyToOne
+    @JoinColumn(name = " id_img")
+    private Img img;
+
 
     @Column(name = "tieu_de")
     private String tieuDe;
