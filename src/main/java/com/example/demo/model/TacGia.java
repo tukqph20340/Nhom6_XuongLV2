@@ -24,11 +24,13 @@ public class TacGia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tac_gia")
-    private Integer idTacGia;
+    private Long idTacGia;
+
+    @Column(name = "ma")
+    private String ma;
 
     @Column(name = " ho_ten")
     private String hoVaTen;
-
 
     @Column(name = "ngay_sinh")
     private String ngaySinh;

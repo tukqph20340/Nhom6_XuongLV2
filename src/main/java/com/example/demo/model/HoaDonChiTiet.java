@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,57 +10,38 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 @Entity
-@Table(name = "sach")
+@Table(name = "hoa_don_chi_tiet")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Sach {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_sach")
-    private Long idSach;
+public class HoaDonChiTiet {
 
-   @ManyToOne
-   @JoinColumn(name = "id_ncc")
-   private NhaCungCap nhaCungCap;
+    @EmbeddedId
+    HoaDonChiTietID id;
 
     @ManyToOne
-    @JoinColumn(name = "id_tac_gia")
-    private TacGia tacGia;
+    @JoinColumn(name = "id_hoa_don", nullable = false, insertable = false, updatable = false)
+    private HoaDon hoaDon;
 
     @ManyToOne
-    @JoinColumn(name = " id_img")
-    private Images images;
+    @JoinColumn(name = "id_sach",nullable = false, insertable = false, updatable = false)
+    private Sach sach;
 
-    @ManyToOne
-    @JoinColumn(name = " id_nxb")
-    private NhaXuatBan nhaXuatBan;
-
-    @Column(name = "tieu_de")
-    private String tieuDe;
-
-
-
-    @Column(name = "ngay_xuat_ban")
-    private String ngaySatBan;
-
-    @Column(name = "gia_nhap")
-    private Double giaNhap;
-
-    @Column(name = "gia_ban")
-    private Double giaBan;
+    @Column(name = "tong_hoa_don")
+    private Double tongHoaDon;
 
     @Column(name = "so_luong")
     private Integer soLuong;
-
 
     @Column(name = "trang_thai")
     private Integer trangThai;

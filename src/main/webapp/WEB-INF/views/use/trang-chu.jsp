@@ -96,15 +96,15 @@ html *::-webkit-scrollbar-track {
 						</a>
 							<ul class="dropdown-menu" aria-labelledby="dropAccount"
 								style="top: auto; left: auto;">
-								<sec:authorize access="!isAuthenticated()">
-								 <li><a class="dropdown-item" href="/login">Login</a></li>
-								</sec:authorize>
-								<sec:authorize access="isAuthenticated()">
-								  <li><a class="dropdown-item" href="/logout">Logout</a></li>
-								</sec:authorize>
-								<sec:authorize access="hasAuthority('1') and isAuthenticated()">
-								<li><a class="dropdown-item" href="/admin">Manage Users</a></li>
-								</sec:authorize>
+<%--								<sec:authorize access="!isAuthenticated()">--%>
+<%--								 <li><a class="dropdown-item" href="/login">Login</a></li>--%>
+<%--								</sec:authorize>--%>
+<%--								<sec:authorize access="isAuthenticated()">--%>
+<%--								  <li><a class="dropdown-item" href="/logout">Logout</a></li>--%>
+<%--								</sec:authorize>--%>
+<%--								<sec:authorize access="hasAuthority('1') and isAuthenticated()">--%>
+<%--								<li><a class="dropdown-item" href="/admin">Manage Users</a></li>--%>
+<%--								</sec:authorize>--%>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link text-white"
 							aria-current="page" href="#"> <i
@@ -113,12 +113,12 @@ html *::-webkit-scrollbar-track {
 						<li class="nav-item"><a class="nav-link text-white"
 							aria-current="page" href="/user/carts"> <i
 								class="fa-solid fa-cart-shopping fs-4 position-relative"> 
-								<c:if test="${ countCart >0}">								
-								<span
-									class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em">
-										${ countCart } <span class="visually-hidden">unread messages</span>
-								</span>
-								</c:if>
+<%--								<c:if test="${ countCart >0}">								--%>
+<%--								<span--%>
+<%--									class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em">--%>
+<%--										${ countCart } <span class="visually-hidden">unread messages</span>--%>
+<%--								</span>--%>
+<%--								</c:if>--%>
 							</i>
 						</a></li>
 						<li class="nav-item"><a class="nav-link text-white"
@@ -139,14 +139,14 @@ html *::-webkit-scrollbar-track {
 		</div>
 		<div class="container">
 			<div class="row bg-light mt-3 p-5">
-				<div class="col-6">
-				<form:form action="/user/payment-verify" method="post" modelAttribute="payment">
-					<h5>Địa chỉ nhận hàng</h5>
-					<form:input path="shippingAddress" class="form-control" />
-					<form:errors path="shippingAddress" cssClass="text-danger" />
-					
-					<button class="btn btn-danger w-100 mt-5">Xác nhận thanh toán</button>
-				</form:form> 
+<%--				<div class="col-6">--%>
+<%--				<form:form action="/user/payment-verify" method="post" modelAttribute="payment">--%>
+<%--					<h5>Địa chỉ nhận hàng</h5>--%>
+<%--					<form:input path="shippingAddress" class="form-control" />--%>
+<%--					<form:errors path="shippingAddress" cssClass="text-danger" />--%>
+<%--					--%>
+<%--					<button class="btn btn-danger w-100 mt-5">Xác nhận thanh toán</button>--%>
+<%--				</form:form> --%>
 				</div>
 				<div class="col-4 offset-2">
 					<img alt="payment" src="/public/images/undraw_shopping_app_flsj.svg" width="100%" height="auto">

@@ -6,41 +6,42 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
 @Entity
-@Table(name = "nha_cung_cap")
+@Table(name = "giay_phep")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class NhaCungCap {
+public class GiayPhep {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_ncc")
-    private Long idNhaCungCap;
+    @Column(name = "id_giay_phep")
+    private Long idGiayPhep;
 
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_ncc")
-    private String ten;
+    @Column(name = "ngay_het_han")
+    @Temporal(TemporalType.DATE)
+    private Date ngayHetHan;
 
-
-    @Column(name = "dia_chi")
-    private String diaChi;
-
-
-    @Column(name = "sdt")
-    private String sdt;
-
-    @Column(name = "email")
-    private String email;
+    @Column(name = "so_giay_phep")
+    private String soGiayPhep;
 
     @Column(name = "trang_thai")
     private Integer trangThai;
