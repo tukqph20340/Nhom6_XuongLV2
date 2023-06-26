@@ -13,36 +13,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 @Entity
-@Table(name = "nha_cung_cap")
+@Table(name = "tai_khoan")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class NhaCungCap {
+public class TaiKhoan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_ncc")
-    private Long idNhaCungCap;
+    @Column(name = "id_tk")
+    private Long idTaiKhoan;
 
-    @Column(name = "ma")
-    private String ma;
+    @Column(name = "usename")
+    private String usename;
 
-    @Column(name = "ten_ncc")
-    private String ten;
-
-
-    @Column(name = "dia_chi")
-    private String diaChi;
-
-
-    @Column(name = "sdt")
-    private String sdt;
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "trang_thai")
-    private Integer trangThai;
+    @Column(name = "sdt")
+    private String sdt;
 
+    @Column(name = "nguoi_truy_cap")
+    private String nguoi_truy_cap;
 }

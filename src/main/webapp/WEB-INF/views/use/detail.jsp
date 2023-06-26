@@ -14,7 +14,7 @@
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
             rel="stylesheet">
-    <title>${ product.name }</title>
+<%--    <title>${ product.name }</title>--%>
 </head>
 <style>
 
@@ -96,15 +96,15 @@
                     </a>
                         <ul class="dropdown-menu" aria-labelledby="dropAccount"
                             style="top: auto; left: auto;">
-                            <sec:authorize access="!isAuthenticated()">
-                                <li><a class="dropdown-item" href="/login">Login</a></li>
-                            </sec:authorize>
-                            <sec:authorize access="isAuthenticated()">
-                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                            </sec:authorize>
-                            <sec:authorize access="hasAuthority('1') and isAuthenticated()">
-                                <li><a class="dropdown-item" href="/admin">Manage Users</a></li>
-                            </sec:authorize>
+<%--                            <sec:authorize access="!isAuthenticated()">--%>
+<%--                                <li><a class="dropdown-item" href="/login">Login</a></li>--%>
+<%--                            </sec:authorize>--%>
+<%--                            <sec:authorize access="isAuthenticated()">--%>
+<%--                                <li><a class="dropdown-item" href="/logout">Logout</a></li>--%>
+<%--                            </sec:authorize>--%>
+<%--                            <sec:authorize access="hasAuthority('1') and isAuthenticated()">--%>
+<%--                                <li><a class="dropdown-item" href="/admin">Manage Users</a></li>--%>
+<%--                            </sec:authorize>--%>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link text-white"
@@ -114,12 +114,12 @@
                     <li class="nav-item"><a class="nav-link text-white"
                                             aria-current="page" href="/user/carts"> <i
                             class="fa-solid fa-cart-shopping fs-4 position-relative">
-                        <c:if test="${ countCart >0}">
-								<span
-                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em">
-										${ countCart } <span class="visually-hidden">unread messages</span>
-								</span>
-                        </c:if>
+<%--                        <c:if test="${ countCart >0}">--%>
+<%--								<span--%>
+<%--                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em">--%>
+<%--										${ countCart } <span class="visually-hidden">unread messages</span>--%>
+<%--								</span>--%>
+<%--                        </c:if>--%>
                     </i>
                     </a></li>
                     <li class="nav-item"><a class="nav-link text-white"
@@ -144,56 +144,56 @@
     </div>
     <%-- Main --%>
     <div class="container">
-        <form action="/user/store" method="post">
-            <input name="product" type="hidden" value="${ product.id }" />
-            <input name="price" type="hidden" value="${ product.price }" />
-            <input name="quantity" type="hidden" value="${ quantity }" />
-            <div class="row gy-1 p-5">
-                <div class="col-6 p-2">
-                    <img alt="${ product.name }" src="${ product.image }"
-                         class="w-100">
+<%--        <form action="/user/store" method="post">--%>
+<%--            <input name="product" type="hidden" value="${ product.id }" />--%>
+<%--            <input name="price" type="hidden" value="${ product.price }" />--%>
+<%--            <input name="quantity" type="hidden" value="${ quantity }" />--%>
+<%--            <div class="row gy-1 p-5">--%>
+<%--                <div class="col-6 p-2">--%>
+<%--                    <img alt="${ product.name }" src="${ product.image }"--%>
+<%--                         class="w-100">--%>
 
-                </div>
-                <div class="col-6 px-5">
-                    <h1>${ product.name }</h1>
-                    <h4 class="text-danger fw-bold">${ product.price }
-                        <span>VND</span>
-                    </h4>
-                    <p class="mt-4">${ product.descriptions }</p>
-                    <h5>
-                        Loại sản phẩm : <span class="text-secondary">${ product.categories.name }</span>
-                    </h5>
+<%--                </div>--%>
+<%--                <div class="col-6 px-5">--%>
+<%--                    <h1>${ product.name }</h1>--%>
+<%--                    <h4 class="text-danger fw-bold">${ product.price }--%>
+<%--                        <span>VND</span>--%>
+<%--                    </h4>--%>
+<%--                    <p class="mt-4">${ product.descriptions }</p>--%>
+<%--                    <h5>--%>
+<%--                        Loại sản phẩm : <span class="text-secondary">${ product.categories.name }</span>--%>
+<%--                    </h5>--%>
 
-                    <h5>
-                        Trạng thái : <span class="text-secondary">${ product.available=='1'?'Còn hàng':'Hết hàng' }</span>
-                    </h5>
-                    <h5>Số lượng :</h5>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <button type="button" class="page-link" onClick="onDown()">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                            </li>
-                            <li class="page-item">
-                                <p class="text-black">
-                                    <input id="quantity" name="quantity" value="1" class="form-control"/>
-                                </p>
-                            </li>
-                            <li class="page-item">
-                                <button type="button" class="page-link" onClick="onUp()">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </li>
-                        </ul>
-                    </nav>
-                    <button class="btn btn-info w-100 text-white">
-                        <i class="fa-solid fa-cart-shopping"></i> <span>ADD TO
-								CART</span>
-                    </button>
-                </div>
-            </div>
-        </form>
+<%--                    <h5>--%>
+<%--                        Trạng thái : <span class="text-secondary">${ product.available=='1'?'Còn hàng':'Hết hàng' }</span>--%>
+<%--                    </h5>--%>
+<%--                    <h5>Số lượng :</h5>--%>
+<%--                    <nav aria-label="Page navigation example">--%>
+<%--                        <ul class="pagination">--%>
+<%--                            <li class="page-item">--%>
+<%--                                <button type="button" class="page-link" onClick="onDown()">--%>
+<%--                                    <i class="fa-solid fa-minus"></i>--%>
+<%--                                </button>--%>
+<%--                            </li>--%>
+<%--                            <li class="page-item">--%>
+<%--                                <p class="text-black">--%>
+<%--                                    <input id="quantity" name="quantity" value="1" class="form-control"/>--%>
+<%--                                </p>--%>
+<%--                            </li>--%>
+<%--                            <li class="page-item">--%>
+<%--                                <button type="button" class="page-link" onClick="onUp()">--%>
+<%--                                    <i class="fa-solid fa-plus"></i>--%>
+<%--                                </button>--%>
+<%--                            </li>--%>
+<%--                        </ul>--%>
+<%--                    </nav>--%>
+<%--                    <button class="btn btn-info w-100 text-white">--%>
+<%--                        <i class="fa-solid fa-cart-shopping"></i> <span>ADD TO--%>
+<%--								CART</span>--%>
+<%--                    </button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </form>--%>
     </div>
     <%-- Footer --%>
     <div class="row mt-5 p-4" style="background-color: #0a3d62">

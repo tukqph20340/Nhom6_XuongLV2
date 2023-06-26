@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +14,10 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<title>My carts</title>
+<title>Shoes shop</title>
 </head>
 <style>
-//
+
 Scrollbar CSS
 
 html *::-webkit-scrollbar {
@@ -105,23 +105,23 @@ html *::-webkit-scrollbar-track {
 <%--								<sec:authorize access="hasAuthority('1') and isAuthenticated()">--%>
 <%--								<li><a class="dropdown-item" href="/admin">Manage Users</a></li>--%>
 <%--								</sec:authorize>--%>
-<%--							</ul>--%>
-</li>
+<%--							</ul></li>--%>
 						<li class="nav-item"><a class="nav-link text-white"
 							aria-current="page" href="#"> <i
 								class="fa-solid fa-magnifying-glass fs-4"></i>
 						</a></li>
-						<li class="nav-item"><a class="nav-link text-white"
-							aria-current="page" href="/user/carts"> <i
-								class="fa-solid fa-cart-shopping fs-4 position-relative"> 
-<%--								<c:if test="${ countCart >0}">								--%>
-<%--								<span--%>
-<%--									class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em">--%>
-<%--										${ countCart } <span class="visually-hidden">unread messages</span>--%>
-<%--								</span>--%>
-<%--								</c:if>--%>
-							</i>
-						</a></li>
+<%--						<li class="nav-item"><a class="nav-link text-white"--%>
+<%--							aria-current="page" href="/user/carts"> <i--%>
+<%--								class="fa-solid fa-cart-shopping fs-4 position-relative"> <c:if--%>
+<%--										test="${ countCart >0}">--%>
+<%--										<span--%>
+<%--											class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"--%>
+<%--											style="font-size: 0.5em"> ${ countCart } <span--%>
+<%--											class="visually-hidden">unread messages</span>--%>
+<%--										</span>--%>
+<%--									</c:if>--%>
+<%--							</i>--%>
+<%--						</a></li>--%>
 						<li class="nav-item"><a class="nav-link text-white"
 							aria-current="page" href="#"> <i
 								class="fa-solid fa-wallet fs-4"></i>
@@ -134,87 +134,124 @@ html *::-webkit-scrollbar-track {
 				</div>
 			</div>
 		</nav>
-		<div class="bg-light p-3" style="margin-top: 120px">
-			<p>Sử dụng mã giảm giá để giảm chi phí sản phẩm</p>
+		<%-- Slider --%>
+		<div class="row" style="margin-top: 120px">
+			<div id="carouselExampleInterval" class="carousel slide"
+				data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-bs-interval="10000">
+						<img src="./public/images/post-slide-1.png"
+							class="d-block w-100 rounded" alt="sale" style="height: 550px">
+					</div>
+					<div class="carousel-item" data-bs-interval="2000">
+						<img src="./public/images/post-slide-2.png"
+							class="d-block w-100 rounded" alt="sale" style="height: 550px">
+					</div>
+					<div class="carousel-item">
+						<img src="./public/images/post-slide-3.png"
+							class="d-block w-100 rounded" alt="sale" style="height: 550px">
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button"
+					data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button"
+					data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+		<%-- Service --%>
+		<div class="container mt-5 border rounded">
+			<div class="row">
+				<div
+					class="col-2 d-flex justify-content-center align-items-center p-3">
+					<img alt="exchange" src="./public/images/exchange-svgrepo-com.svg"
+						height="45" width="45">
+					<div>Exchange</div>
+				</div>
+				<div
+					class="col-2 d-flex justify-content-center align-items-center p-3">
+					<img alt="exchange"
+						src="./public/images/free-shipping-svgrepo-com.svg" height="45"
+						width="45">
+					<div>Free ship</div>
+				</div>
+				<div
+					class="col-2 d-flex justify-content-center align-items-center p-3">
+					<img alt="exchange"
+						src="./public/images/award-quality-svgrepo-com.svg" height="45"
+						width="45">
+					<div>Quality</div>
+				</div>
+				<div
+					class="col-2 d-flex justify-content-center align-items-center p-3">
+					<img alt="exchange" src="./public/images/flash-svgrepo-com.svg"
+						height="45" width="45">
+					<div>Cheap</div>
+				</div>
+				<div
+					class="col-2 d-flex justify-content-center align-items-center p-3">
+					<img alt="exchange"
+						src="./public/images/shipping-fast-solid-svgrepo-com.svg"
+						height="45" width="45">
+					<div>Fast shipping</div>
+				</div>
+				<div
+					class="col-2 d-flex justify-content-center align-items-center p-3">
+					<img alt="exchange"
+						src="./public/images/operator-customer-service-svgrepo-com.svg"
+						height="45" width="45">
+					<div>CSKH</div>
+				</div>
+			</div>
 		</div>
 		<%-- Main --%>
-		<div class="container mt-5">
-			<div class="row bg-light">
-				<div class="table-responsive p-4" style="overflow-x: auto">
-					<table class="table  table-borderless">
-						<thead>
-							<tr>
-								<td>Sản phẩm</td>
-								<td>Loại hàng</td>
-								<td>Đơn giá</td>
-								<td>Số lượng</td>
-								<td>Thành tiền</td>
-								<td>Thao tác</td>
-							</tr>
-						</thead>
-						<tbody>
-<%--							<c:forEach items="${ listDetail }" var="detail">--%>
-<%--								<tr>--%>
-<%--									<td><img alt="${ detail.product.name }"--%>
-<%--										src="${ detail.product.image }" width="50" height="50">--%>
-<%--										${ detail.product.name }</td>--%>
-<%--									<td>${ detail.product.categories.name }</td>--%>
-<%--									<td>${ detail.orderDetail.price }</td>--%>
-<%--									<td>${ detail.orderDetail.quantity }</td>--%>
-<%--									<td>${ detail.orderDetail.price*detail.orderDetail.quantity }</td>--%>
-<%--									<td>--%>
-<%--										<button class="btn btn-danger" data-bs-toggle="modal"--%>
-<%--											data-bs-target="#modalDelte_${detail.orderDetail.id}_${detail.order.id}">--%>
-<%--											<i class="fa-solid fa-trash-can"></i>--%>
-<%--										</button> <!-- Modal delete -->--%>
-<%--										<div class="modal fade"--%>
-<%--											id="modalDelte_${detail.orderDetail.id}_${detail.order.id}"--%>
-<%--											data-bs-backdrop="static" data-bs-keyboard="false"--%>
-<%--											tabindex="-1" aria-labelledby="staticBackdropLabel"--%>
-<%--											aria-hidden="true">--%>
-<%--											<div class="modal-dialog">--%>
-<%--												<div class="modal-content">--%>
-<%--													<div class="modal-header bg-danger">--%>
-<%--														<h5 class="modal-title text-white"--%>
-<%--															id="staticBackdropLabel">Delete a cart !</h5>--%>
-<%--														<button type="button" class="btn" data-bs-dismiss="modal"--%>
-<%--															aria-label="Close">--%>
-<%--															<i class="fa-solid fa-xmark fs-5 text-white"></i>--%>
-<%--														</button>--%>
-<%--													</div>--%>
-<%--													<div class="modal-body" style="background-color: #fff2df">--%>
-<%--														<p>Warning : You are trying a cart. This cart will be--%>
-<%--															permanently deleted !</p>--%>
-<%--														<a type="button" class="btn  btn-danger w-100"--%>
-<%--															href="/user/delete/${detail.order.id}">--%>
-<%--															Delete--%>
-<%--														</a>--%>
-<%--													</div>--%>
-<%--												</div>--%>
-<%--											</div>--%>
+		<div style="background-color: #f5f5f5">
+			<div class="container-fluid">
+				<div class="row mt-5 p-5 gx-5">
+					<div class="col-3">
+						<h3>Danh mục</h3>
+<%--						<div class="list-group">--%>
+<%--							<c:forEach items="${ listCate }" var="cate">--%>
+<%--								<button type="button"--%>
+<%--									class="list-group-item list-group-item-action"--%>
+<%--									aria-current="true">${ cate.name }</button>--%>
+<%--							</c:forEach>--%>
+<%--						</div>--%>
+					</div>
+					<div class="col-9">
+						<h3>Sản phẩm</h3>
+<%--						<div class="row row-cols-1 row-cols-md-4 g-4">--%>
+<%--							<c:forEach items="${ data.content }" var="pro">--%>
+<%--								<div class="col">--%>
+<%--									<div class="card h-100">--%>
+<%--										<img src="${ pro.image }" class="card-img-top"--%>
+<%--											alt="${ pro.name }">--%>
+<%--										<div class="card-body">--%>
+<%--											<h5 class="card-title">--%>
+<%--												<a class="text-decoration-none"--%>
+<%--													href="/user/buy-product/${ pro.id }">${ pro.name }</a>--%>
+<%--											</h5>--%>
+<%--											<p class="card-text text-danger">${ pro.price }VND</p>--%>
 <%--										</div>--%>
-<%--									</td>--%>
-<%--								</tr>--%>
-<%--							</c:forEach>					--%>
-						</tbody>
-					</table>
-					<div class="row">
-<%--					<c:if test="${ countCart > 0}">--%>
-<%--						<div class="col-3">--%>
-<%--							<h4>--%>
-<%--								Tổng tiền : <span class="text-danger">${ totalPrice } VND</span>--%>
-<%--							</h4>--%>
+<%--									</div>--%>
+<%--								</div>--%>
+<%--							</c:forEach>--%>
 <%--						</div>--%>
-<%--						<div class="col-3 offset-6">--%>
-<%--							<a class="btn btn-primary w-100" href="/user/payment">Thanh--%>
-<%--								toán</a>--%>
+						<%-- Pagination --%>
+<%--						<div class="row mt-5">--%>
+<%--							<ul class="pagination justify-content-center">--%>
+<%--								<c:forEach var="index" begin="0" end="${ data.totalPages - 1 }">--%>
+<%--									<li class="page-item mx-1"><a--%>
+<%--										class="page-link ${ index==page?'bg-black text-white':'' }"--%>
+<%--										href="/home?page=${ index }">${ index + 1 }</a></li>--%>
+<%--								</c:forEach>--%>
+<%--							</ul>--%>
 <%--						</div>--%>
-<%--						</c:if>--%>
-<%--						<c:if test="${ countCart ==0 }">--%>
-<%--							<div class="col-12 text-center">--%>
-<%--								<p class="alert alert-info">Danh sách đơn hàng trống !</p>--%>
-<%--							</div>--%>
-<%--						</c:if>--%>
 					</div>
 				</div>
 			</div>

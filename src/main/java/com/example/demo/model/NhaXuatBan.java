@@ -24,7 +24,10 @@ public class NhaXuatBan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_nxb")
-    private Integer idNhaXuatBan;
+    private Long idNhaXuatBan;
+
+    @Column(name = "ma")
+    private String ma;
 
     @Column(name = "ten")
     private String ten;

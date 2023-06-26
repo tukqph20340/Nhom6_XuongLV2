@@ -9,58 +9,53 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.Date;
+
 @Entity
-@Table(name = "sach")
+@Table(name = "liach_su_ban_hang")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Sach {
+public class LichSuBanHang {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_sach")
-    private Long idSach;
-
-   @ManyToOne
-   @JoinColumn(name = "id_ncc")
-   private NhaCungCap nhaCungCap;
+    @Column(name = "id_ban_hang")
+    private Long idLichSuBanHang;
 
     @ManyToOne
-    @JoinColumn(name = "id_tac_gia")
-    private TacGia tacGia;
+    @JoinColumn(name = "id_nhan_vien")
+    private NhanVien nhanVien;
 
     @ManyToOne
-    @JoinColumn(name = " id_img")
-    private Images images;
+    @JoinColumn(name = "id_khach_hang")
+    private KhachHang khachHang;
 
     @ManyToOne
-    @JoinColumn(name = " id_nxb")
-    private NhaXuatBan nhaXuatBan;
+    @JoinColumn(name = "id_sach")
+    private Sach sach;
 
-    @Column(name = "tieu_de")
-    private String tieuDe;
+    @ManyToOne
+    @JoinColumn(name = "id_voucher")
+    private Voucher voucher;
 
-
-
-    @Column(name = "ngay_xuat_ban")
-    private String ngaySatBan;
-
-    @Column(name = "gia_nhap")
-    private Double giaNhap;
-
-    @Column(name = "gia_ban")
-    private Double giaBan;
-
-    @Column(name = "so_luong")
+    @Column(name = "quantity")
     private Integer soLuong;
 
+    @Column(name = "sale_date")
+    @Temporal(TemporalType.DATE)
+    private Date ngayBan;
 
     @Column(name = "trang_thai")
-    private Integer trangThai;
+    private Integer trang_thai;
+
 }

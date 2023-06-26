@@ -9,58 +9,52 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
 @Entity
-@Table(name = "sach")
+@Table(name = "voucher")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Sach {
+public class Voucher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_sach")
-    private Long idSach;
-
-   @ManyToOne
-   @JoinColumn(name = "id_ncc")
-   private NhaCungCap nhaCungCap;
+    @Column(name = "id_voucher")
+    private Long idVoucher;
 
     @ManyToOne
-    @JoinColumn(name = "id_tac_gia")
-    private TacGia tacGia;
+    @JoinColumn(name = "id_khach_hang")
+    private KhachHang khachHang;
 
     @ManyToOne
-    @JoinColumn(name = " id_img")
-    private Images images;
+    @JoinColumn(name = "id_hoa_don")
+    private HoaDon hoaDon;
 
-    @ManyToOne
-    @JoinColumn(name = " id_nxb")
-    private NhaXuatBan nhaXuatBan;
+    @Column(name = "ma_voucher")
+    private String ma;
 
-    @Column(name = "tieu_de")
-    private String tieuDe;
+    @Column(name = "gia_tri_giam")
+    private BigDecimal giaTriGiam;
 
-
-
-    @Column(name = "ngay_xuat_ban")
-    private String ngaySatBan;
-
-    @Column(name = "gia_nhap")
-    private Double giaNhap;
-
-    @Column(name = "gia_ban")
-    private Double giaBan;
+    @Column(name = "ngay_het_han")
+    @Temporal(TemporalType.DATE)
+    private Date ngayHetHan;
 
     @Column(name = "so_luong")
     private Integer soLuong;
 
-
     @Column(name = "trang_thai")
     private Integer trangThai;
+
 }
