@@ -26,13 +26,12 @@ public class TacGia {
     @Column(name = "id_tac_gia")
     private Long idTacGia;
 
-    @Column(name = "ma")
-    private String ma;
 
     @Column(name = " ho_ten")
     private String hoVaTen;
 
     @Column(name = "ngay_sinh")
     private String ngaySinh;
+
 
 }

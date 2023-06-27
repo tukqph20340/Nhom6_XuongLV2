@@ -7,8 +7,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.ArrayList;
 public interface TacGiaSevice {
     ArrayList<TacGia> getAll();
-    void delete(Integer id);
-    TacGia detail(Integer id);
+    void delete(Long id);
+    TacGia detail(Long id);
     TacGia add(TacGia tacGia);
     TacGia update(TacGia tacGia);
     Page<TacGia> phanTrang(Pageable pageable);

@@ -25,8 +25,6 @@ public class TheLoai {
     @Column(name = "id_the_loai")
     private Long idTheLoai;
 
-    @Column(name = "ma")
-    private String ma;
 
     @Column(name = "ten")
     private String ten;

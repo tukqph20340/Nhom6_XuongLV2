@@ -31,27 +31,35 @@ public class BanQuyen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_ban_quyen")
-    private Long idVoucher;
+    private Long idBanQuyen;
 
     @ManyToOne
     @JoinColumn(name = "id_sach")
     private Sach sach;
 
+
+
     @ManyToOne
     @JoinColumn(name = "id_giay_phep")
     private GiayPhep giayPhep;
 
-    @Column(name = "ma")
-    private String ma;
 
     @Column(name = "ngay_bat_dau")
     @Temporal(TemporalType.DATE)
     private Date ngayBatdau;
 
-    @Column(name = "ten_tac)gia")
-    private String tenTacGia;
+
+
 
     @Column(name = "trang_thai")
     private Integer trangThai;
+
+    @Column(name = "ngay_het_han")
+    @Temporal(TemporalType.DATE)
+    private Date ngayHetHan;
+
+    @Column(name = "nguoi_ky")
+    private String nguoiKy;
+
 
 }

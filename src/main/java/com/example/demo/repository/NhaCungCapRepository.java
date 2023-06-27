@@ -1,4 +1,6 @@
 package com.example.demo.repository;
 
-public interface NhaCungCapRepository {
+import com.example.demo.model.NhaCungCap;
+import org.springframework.data.jpa.repository.JpaRepository;
+public interface NhaCungCapRepository extends JpaRepository<NhaCungCap, Long> {
 }

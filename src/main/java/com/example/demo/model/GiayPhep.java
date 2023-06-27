@@ -33,15 +33,14 @@ public class GiayPhep {
     @Column(name = "id_giay_phep")
     private Long idGiayPhep;
 
-    @Column(name = "ma")
-    private String ma;
+
 
     @Column(name = "ngay_het_han")
     @Temporal(TemporalType.DATE)
     private Date ngayHetHan;
 
     @Column(name = "so_giay_phep")
-    private String soGiayPhep;
+    private Integer soGiayPhep;
 
     @Column(name = "trang_thai")
     private Integer trangThai;

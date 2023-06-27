@@ -8,8 +8,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.ArrayList;
 public interface NhaCungCapSevice {
     ArrayList<NhaCungCap> getAll();
-    void delete(Integer id);
-    NhaCungCap detail(Integer id);
+    void delete(Long id);
+    NhaCungCap detail(Long id);
     NhaCungCap add(NhaCungCap nhaCungCap);
     NhaCungCap update(NhaCungCap nhaCungCap);
     Page<NhaCungCap> phanTrang(Pageable pageable);

@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "nhan_vien")
@@ -30,14 +30,8 @@ public class NhanVien {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_nhan_vien")
-    private Long idKhachHang;
+    private Long idNhanVien;
 
-    @ManyToOne
-    @JoinColumn(name = "id_cv")
-    private ChucVu chucVu;
-
-    @Column(name = "ma")
-    private String ma;
 
     @Column(name = "ho_va_ten")
     private String hoTen;
@@ -55,7 +49,7 @@ public class NhanVien {
     @Temporal(TemporalType.DATE)
     private Date ngaySinh;
 
-    @Column(name = "diac_chi")
+    @Column(name = "dia_chi")
     private String diaChi;
 
     @Column(name = "trang_thai")

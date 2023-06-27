@@ -20,12 +20,12 @@ public class NhaXuatBanSeviceImpl implements NhaXuatBanSevice {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 
     @Override
-    public NhaXuatBan detail(Integer id) {
+    public NhaXuatBan detail(Long id) {
         return repository.getById(id);
     }
 

@@ -1,15 +1,15 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Images;
 import com.example.demo.model.NhaCungCap;
 import com.example.demo.model.NhaXuatBan;
 import com.example.demo.model.Sach;
 import com.example.demo.model.TacGia;
-import com.example.demo.service.ImgSevice;
+import com.example.demo.model.TheLoai;
 import com.example.demo.service.NhaCungCapSevice;
 import com.example.demo.service.NhaXuatBanSevice;
 import com.example.demo.service.SachSevice;
 import com.example.demo.service.TacGiaSevice;
+import com.example.demo.service.TheLoaiSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.Date;
 @Controller
 @RequestMapping("/admin/")
 public class SachController {
@@ -31,7 +30,6 @@ public class SachController {
     TacGiaSevice tacGiaSevice;
 
 
-
     @Autowired
     NhaCungCapSevice nhaCungCapS;
 
@@ -41,72 +39,388 @@ public class SachController {
 
 
     @Autowired
-    ImgSevice imgSevice;
+    TheLoaiSevice theLoaiSevice;
 
 
-
-    @GetMapping("san-pham")
-    public  String viewAdd(Model model){
+    @GetMapping("san-pham/hien-thi")
+    public String viewAdd(Model model) {
         ArrayList<TacGia> listTG = tacGiaSevice.getAll();
         ArrayList<NhaCungCap> listNCC = nhaCungCapS.getAll();
         ArrayList<NhaXuatBan> listNXB = nhaXuatBanSevice.getAll();
-        ArrayList<Images> listImg = imgSevice.getAll();
+        ArrayList<TheLoai> listTL = theLoaiSevice.getAll();
         ArrayList<Sach> list = sevice.getAll();
-        model.addAttribute("list",list);
-        model.addAttribute("listTG",listTG);
-        model.addAttribute("listNCC",listNCC);
-        model.addAttribute("listNXB",listNXB);
-        model.addAttribute("listImg",listImg);
+        model.addAttribute("list", list);
+        model.addAttribute("listTG", listTG);
+        model.addAttribute("listNCC", listNCC);
+        model.addAttribute("listNXB", listNXB);
+        model.addAttribute("listTl", listTL);
         return "/admin/sanpham/san-pham";
     }
 
-    @GetMapping("delete")
-    public  String delete(Model model, @RequestParam("id") Integer id){
+    @GetMapping("san-pham/delete")
+    public String delete(Model model, @RequestParam("id") Long id) {
         sevice.delete(id);
-        return "redirect:/admin/san-pham";
+        return "redirect:/admin/san-pham/hien-thi";
     }
 
-//    @PostMapping("add")
-//    public  String add(Model model, @RequestParam("tenNhaCungCap") Integer tenNhaCungCap
-//            , @RequestParam("tenTacGia") Integer tenTacGia
-//            , @RequestParam("tenNhaSanXuat") Integer tenNhaSanXuat
-//            , @RequestParam("tieuDe") String tieuDe
-//            , @RequestParam("ngayXuatBan") String ngayXuatBan
-//            , @RequestParam("giaBan") Double giaBan
-//            , @RequestParam("giaNhap") Double giaNhap
-//            , @RequestParam("soLuong") Integer soLuong
-//            ){
-//        if(soLuong>0) {
-//            Sach sach = new Sach();
-//            NhaCungCap ncc = new NhaCungCap();
-//            ncc.setIdNhaCungCap(tenNhaCungCap);
-//            TacGia tg = new TacGia();
-//            tg.setIdTacGia(tenTacGia);
-//            NhaXuatBan nxb = new NhaXuatBan();
-//            nxb.setIdNhaXuatBan(tenNhaSanXuat);
-//            sach.setTieuDe(tieuDe);
-//            sach.setNgaySatBan(ngayXuatBan);
-//            sach.setGiaBan(giaBan);
-//            sach.setGiaNhap(giaNhap);
-//            sach.setSoLuong(soLuong);
-//            sach.setTrangThai(1);
-//            return "redirect:/admin/san-pham";
-//        }else {
-//            Sach sach = new Sach();
-//            NhaCungCap ncc = new NhaCungCap();
-//            ncc.setIdNhaCungCap(tenNhaCungCap);
-//            TacGia tg = new TacGia();
-//            tg.setIdTacGia(tenTacGia);
-//            NhaXuatBan nxb = new NhaXuatBan();
-//            nxb.setIdNhaXuatBan(tenNhaSanXuat);
-//            sach.setTieuDe(tieuDe);
-//            sach.setNgaySatBan(ngayXuatBan);
-//            sach.setGiaBan(giaBan);
-//            sach.setGiaNhap(giaNhap);
-//            sach.setSoLuong(soLuong);
-//            sach.setTrangThai(0);
-//            return "redirect:/admin/san-pham";
-//        }
-//    }
+    @GetMapping("san-pham/viewUpdate")
+    public String viewUpdate(Model model, @RequestParam("id") Long id) {
+        ArrayList<TacGia> listTG = tacGiaSevice.getAll();
+        ArrayList<NhaCungCap> listNCC = nhaCungCapS.getAll();
+        ArrayList<NhaXuatBan> listNXB = nhaXuatBanSevice.getAll();
+        ArrayList<TheLoai> listTL = theLoaiSevice.getAll();
+
+        Sach detail = sevice.detail(id);
+
+        model.addAttribute("listTG", listTG);
+        model.addAttribute("listNCC", listNCC);
+        model.addAttribute("listNXB", listNXB);
+        model.addAttribute("listTl", listTL);
+        model.addAttribute("detail", detail);
+        return "/admin/sanpham/update-san-pham";
+    }
+
+    @PostMapping("san-pham/add")
+    public String add(Model model, @RequestParam("tenNhaCungCap") Long tenNhaCungCap
+            , @RequestParam("tenTacGia") Long tenTacGia
+            , @RequestParam("tenNhaXuatBan") Long tenNhaXuatBan
+            , @RequestParam("theLoai") Long theLoai
+            , @RequestParam("linkAnh") String linkAnh
+            , @RequestParam("tieuDe") String tieuDe
+            , @RequestParam("ngayXuatBan") String ngayXuatBan
+            , @RequestParam("giaBan") Double giaBan
+            , @RequestParam("giaNhap") Double giaNhap
+            , @RequestParam("soLuong") Integer soLuong
+    ) {
+        if (soLuong > 0) {
+            Sach sach = new Sach();
+            NhaCungCap ncc = new NhaCungCap();
+            ncc.setIdNhaCungCap(tenNhaCungCap);
+            sach.setNhaCungCap(ncc);
+
+            TacGia tg = new TacGia();
+            tg.setIdTacGia(tenTacGia);
+            sach.setTacGia(tg);
+
+
+            NhaXuatBan nxb = new NhaXuatBan();
+            nxb.setIdNhaXuatBan(tenNhaXuatBan);
+            sach.setNhaXuatBan(nxb);
+
+
+            TheLoai theLoai1 = new TheLoai();
+            theLoai1.setIdTheLoai(theLoai);
+            sach.setTheLoai(theLoai1);
+
+
+            sach.setFileAnh(linkAnh);
+            sach.setTieuDe(tieuDe);
+            sach.setNgayXuatBan(ngayXuatBan);
+            sach.setGiaBan(giaBan);
+            sach.setGiaNhap(giaNhap);
+            sach.setSoLuong(soLuong);
+            sach.setTrangThai(1);
+            sevice.add(sach);
+            return "redirect:/admin/san-pham/hien-thi";
+        } else {
+            Sach sach = new Sach();
+            NhaCungCap ncc = new NhaCungCap();
+            ncc.setIdNhaCungCap(tenNhaCungCap);
+            sach.setNhaCungCap(ncc);
+
+            TacGia tg = new TacGia();
+            tg.setIdTacGia(tenTacGia);
+            sach.setTacGia(tg);
+
+
+            NhaXuatBan nxb = new NhaXuatBan();
+            nxb.setIdNhaXuatBan(tenNhaXuatBan);
+            sach.setNhaXuatBan(nxb);
+
+
+            TheLoai theLoai1 = new TheLoai();
+            theLoai1.setIdTheLoai(theLoai);
+            sach.setTheLoai(theLoai1);
+
+            sach.setFileAnh(linkAnh);
+            sach.setTieuDe(tieuDe);
+            sach.setNgayXuatBan(ngayXuatBan);
+            sach.setGiaBan(giaBan);
+            sach.setGiaNhap(giaNhap);
+            sach.setSoLuong(soLuong);
+            sach.setTrangThai(0);
+            sevice.add(sach);
+            return "redirect:/admin/san-pham/hien-thi";
+        }
+    }
+
+
+    @PostMapping("san-pham/update")
+    public String update(Model model,
+                         @RequestParam("id") Long id,
+                         @RequestParam("tenNhaCungCap") Long tenNhaCungCap
+            , @RequestParam("tenTacGia") Long tenTacGia
+            , @RequestParam("tenNhaXuatBan") Long tenNhaXuatBan
+            , @RequestParam("theLoai") Long theLoai
+            , @RequestParam("linkAnh") String linkAnh
+            , @RequestParam("tieuDe") String tieuDe
+            , @RequestParam("ngayXuatBan") String ngayXuatBan
+            , @RequestParam("giaBan") Double giaBan
+            , @RequestParam("giaNhap") Double giaNhap
+            , @RequestParam("soLuong") Integer soLuong
+    ) {
+        if (soLuong > 0) {
+            Sach sach = sevice.detail(id);
+            NhaCungCap ncc = new NhaCungCap();
+            ncc.setIdNhaCungCap(tenNhaCungCap);
+            sach.setNhaCungCap(ncc);
+
+            TacGia tg = new TacGia();
+            tg.setIdTacGia(tenTacGia);
+            sach.setTacGia(tg);
+
+
+            NhaXuatBan nxb = new NhaXuatBan();
+            nxb.setIdNhaXuatBan(tenNhaXuatBan);
+            sach.setNhaXuatBan(nxb);
+
+
+            TheLoai theLoai1 = new TheLoai();
+            theLoai1.setIdTheLoai(theLoai);
+            sach.setTheLoai(theLoai1);
+
+
+            sach.setFileAnh(linkAnh);
+            sach.setTieuDe(tieuDe);
+            sach.setNgayXuatBan(ngayXuatBan);
+            sach.setGiaBan(giaBan);
+            sach.setGiaNhap(giaNhap);
+            sach.setSoLuong(soLuong);
+            sach.setTrangThai(1);
+            sevice.add(sach);
+            return "redirect:/admin/san-pham/hien-thi";
+        } else {
+            Sach sach = sevice.detail(id);
+            NhaCungCap ncc = new NhaCungCap();
+            ncc.setIdNhaCungCap(tenNhaCungCap);
+            sach.setNhaCungCap(ncc);
+
+            TacGia tg = new TacGia();
+            tg.setIdTacGia(tenTacGia);
+            sach.setTacGia(tg);
+
+
+            NhaXuatBan nxb = new NhaXuatBan();
+            nxb.setIdNhaXuatBan(tenNhaXuatBan);
+            sach.setNhaXuatBan(nxb);
+
+
+            TheLoai theLoai1 = new TheLoai();
+            theLoai1.setIdTheLoai(theLoai);
+            sach.setTheLoai(theLoai1);
+
+            sach.setFileAnh(linkAnh);
+            sach.setTieuDe(tieuDe);
+            sach.setNgayXuatBan(ngayXuatBan);
+            sach.setGiaBan(giaBan);
+            sach.setGiaNhap(giaNhap);
+            sach.setSoLuong(soLuong);
+            sach.setTrangThai(0);
+            sevice.add(sach);
+            return "redirect:/admin/san-pham/hien-thi";
+        }
+    }
+
+
+    @GetMapping("tac-gia/hien-thi")
+    public String tacGia(Model model) {
+        ArrayList<TacGia> listTG = tacGiaSevice.getAll();
+
+        model.addAttribute("list", listTG);
+
+        return "/admin/tacgia/tac-gia";
+    }
+
+    @GetMapping("tac-gia/delete")
+    public String deleteTG(Model model, @RequestParam("id") Long id) {
+        tacGiaSevice.delete(id);
+        return "redirect:/admin/tac-gia/hien-thi";
+    }
+
+    @GetMapping("tac-gia/viewUpdate")
+    public String viewUpdatetg(Model model, @RequestParam("id") Long id) {
+
+        TacGia detail = tacGiaSevice.detail(id);
+        model.addAttribute("detail", detail);
+        return "/admin/tacgia/update-tac-gia";
+    }
+
+    @PostMapping("tac-gia/add")
+    public String add(Model model
+            , @RequestParam("hoVaTen") String hoVaTen
+            , @RequestParam("ngaySinh") String ngaySinh
+    ) {
+
+
+        TacGia tg = new TacGia();
+        tg.setHoVaTen(hoVaTen);
+        tg.setNgaySinh(ngaySinh);
+        tacGiaSevice.add(tg);
+        return "redirect:/admin/tac-gia/hien-thi";
+
+    }
+
+
+    @PostMapping("tac-gia/update")
+    public String update(Model model,
+                         @RequestParam("id") Long id
+            , @RequestParam("hoVaTen") String hoVaTen
+            , @RequestParam("ngaySinh") String ngaySinh
+    ) {
+
+
+        TacGia tg = tacGiaSevice.detail(id);
+        tg.setHoVaTen(hoVaTen);
+        tg.setNgaySinh(ngaySinh);
+        tacGiaSevice.update(tg);
+        return "redirect:/admin/tac-gia/hien-thi";
+
+    }
+
+    @GetMapping("nha-cung-cap/hien-thi")
+    public String nhaCungCap(Model model) {
+        ArrayList<NhaCungCap> list = nhaCungCapS.getAll();
+
+        model.addAttribute("list", list);
+
+        return "/admin/nhacungcap/nha-cung-cap";
+    }
+
+    @GetMapping("nha-cung-cap/delete")
+    public String nhaCungCapdeleteTG(Model model, @RequestParam("id") Long id) {
+        nhaCungCapS.delete(id);
+        return "redirect:/admin/nha-cung-cap/hien-thi";
+    }
+
+    @GetMapping("nha-cung-cap/viewUpdate")
+    public String nhaCungCapviewUpdatetg(Model model, @RequestParam("id") Long id) {
+
+        NhaCungCap detail = nhaCungCapS.detail(id);
+        model.addAttribute("detail", detail);
+        return "/admin/nhacungcap/update-nha-cung-cap";
+    }
+
+    @PostMapping("nha-cung-cap/add")
+    public String nhaCungCapadd(Model model
+            , @RequestParam("ten") String ten
+            , @RequestParam("diaChi") String diaChi,
+                                @RequestParam("sdt") String sdt
+            , @RequestParam("email") String email
+            , @RequestParam("trangThai") Integer trangThai
+
+    ) {
+
+
+        NhaCungCap tg = new NhaCungCap();
+        tg.setTen(ten);
+        tg.setDiaChi(diaChi);
+        tg.setSdt(sdt);
+        tg.setEmail(email);
+        tg.setTrangThai(trangThai);
+        nhaCungCapS.add(tg);
+        return "redirect:/admin/nha-cung-cap/hien-thi";
+
+    }
+
+
+    @PostMapping("nha-cung-cap/update")
+    public String nhaCungCapupdate(Model model,
+                                   @RequestParam("id") Long id
+            , @RequestParam("ten") String ten
+            , @RequestParam("diaChi") String diaChi,
+                                   @RequestParam("sdt") String sdt
+            , @RequestParam("email") String email
+            , @RequestParam("trangThai") Integer trangThai
+
+    ) {
+
+
+        NhaCungCap tg = nhaCungCapS.detail(id);
+        tg.setTen(ten);
+        tg.setDiaChi(diaChi);
+        tg.setSdt(sdt);
+        tg.setEmail(email);
+        tg.setTrangThai(trangThai);
+        nhaCungCapS.add(tg);
+        return "redirect:/admin/nha-cung-cap/hien-thi";
+
+    }
+
+
+    @GetMapping("nha-xuat-ban/hien-thi")
+    public String nhaXuatban(Model model) {
+        ArrayList<NhaXuatBan> list = nhaXuatBanSevice.getAll();
+
+        model.addAttribute("list", list);
+
+        return "/admin/nhaxuatban/nha-xuat-ban";
+    }
+
+    @GetMapping("nha-xuat-ban/delete")
+    public String nhaXuatbandeleteTG(Model model, @RequestParam("id") Long id) {
+        nhaXuatBanSevice.delete(id);
+        return "redirect:/admin/nha-xuat-ban/hien-thi";
+    }
+
+    @GetMapping("nha-xuat-ban/viewUpdate")
+    public String nhaXuatbanviewUpdatetg(Model model, @RequestParam("id") Long id) {
+
+        NhaXuatBan detail = nhaXuatBanSevice.detail(id);
+        model.addAttribute("detail", detail);
+        return "/admin/nhaxuatban/update-nha-xuat-ban";
+    }
+
+    @PostMapping("nha-xuat-ban/add")
+    public String nhaXuatbanadd(Model model
+            , @RequestParam("ten") String ten
+            , @RequestParam("diaChi") String diaChi,
+                                @RequestParam("sdt") String sdt
+            , @RequestParam("trangThai") Integer trangThai
+
+    ) {
+
+
+        NhaXuatBan tg = new NhaXuatBan();
+        tg.setTen(ten);
+        tg.setDiaChi(diaChi);
+        tg.setSdt(sdt);
+        tg.setTrangThai(trangThai);
+        nhaXuatBanSevice.add(tg);
+        return "redirect:/admin/nha-xuat-ban/hien-thi";
+
+    }
+
+
+    @PostMapping("nha-xuat-ban/update")
+    public String nhaXuatbanCapupdate(Model model,
+                                      @RequestParam("id") Long id
+            , @RequestParam("ten") String ten
+            , @RequestParam("diaChi") String diaChi,
+                                      @RequestParam("sdt") String sdt
+            , @RequestParam("trangThai") Integer trangThai
+
+    ) {
+
+
+        NhaXuatBan tg = nhaXuatBanSevice.detail(id);
+        tg.setTen(ten);
+        tg.setDiaChi(diaChi);
+        tg.setSdt(sdt);
+        tg.setTrangThai(trangThai);
+        nhaXuatBanSevice.add(tg);
+        return "redirect:/admin/nha-xuat-ban/hien-thi";
+
+    }
+
 
 }

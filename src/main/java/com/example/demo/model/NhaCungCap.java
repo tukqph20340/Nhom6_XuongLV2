@@ -25,8 +25,6 @@ public class NhaCungCap {
     @Column(name = "id_ncc")
     private Long idNhaCungCap;
 
-    @Column(name = "ma")
-    private String ma;
 
     @Column(name = "ten_ncc")
     private String ten;

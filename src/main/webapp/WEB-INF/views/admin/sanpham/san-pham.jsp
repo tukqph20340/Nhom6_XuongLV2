@@ -23,56 +23,64 @@
              style="background-color: #0a3d62; height: 100vh">
             <div class="d-flex justify-content-center">
                 <a class="navbar-brand" href="#"> <img alt="logo"
-                                                       src="/public/images/logo-ico.svg" width="100" height="100">
+                                                       src="https://media.istockphoto.com/id/1304792520/vi/vec-to/s%C3%A1ch-store-thi%E1%BA%BFt-k%E1%BA%BF-logo-vector-kh%C3%A1i-ni%E1%BB%87m-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-logo-book-shop.jpg?s=170667a&w=0&k=20&c=9Vl8kxwSdXh4ZsaR6bBMXRkxkCMD0bg36WOW4Nk19UY="
+                                                       width="100"
+                                                       height="100">
                 </a>
             </div>
             <hr>
             <div class="list-group">
                 <p class="text-secondary fw-bold">Components</p>
-                <a href="/admin"
-                   class="list-group-item list-group-item-action border-0"
+                <a href="/admin/tai-khoan/hien-thi" class="list-group-item list-group-item-action border-0"
                    style="background-color: #0a3d62; color: #dcdde1"> <span><i
-                        class="fa-solid fa-gauge-high fs-6 px-1"></i></span> Dash board
-                </a> <a href="/admin/accounts/index"
+                        class="fa-solid fa-gauge-high fs-6 px-1"></i></span> Tài Khoản
+                </a> <a href="/admin/nhan-vien/hien-thi"
                         class="list-group-item list-group-item-action border-0"
                         style="background-color: #0a3d62; color: #dcdde1"> <span><i
-                    class="fa-solid fa-user fs-6 px-1"></i></span> Accounts
-            </a> <a href="/admin/products/index"
+                    class="fa-solid fa-user fs-6 px-1"></i></span> Nhân Viên
+            </a> <a href="/admin/san-pham/hien-thi"
                     class="list-group-item list-group-item-action border-0 "
                     style="background-color: #0a3d62; color: #dcdde1"> <span><i
-                    class="fa-solid fa-cart-shopping fs-6 px-1"></i></span> Products
-            </a> <a href="/admin/categories/index"
+                    class="fa-solid fa-cart-shopping fs-6 px-1"></i></span> Sản Phẩm
+            </a> <a href="/admin/khach-hang/hien-thi"
                     class="list-group-item list-group-item-action border-0 "
                     style="background-color: #0a3d62; color: #dcdde1"> <span><i
-                    class="fa-solid fa-share-nodes fs-6 px-1"></i></span> Categories
-            </a> <a href="#"
+                    class="fa-solid fa-share-nodes fs-6 px-1"></i></span> Khách Hàng
+            </a> <a href="/admin/giay-phep/hien-thi"
                     class="list-group-item list-group-item-action border-0  "
                     style="background-color: #0a3d62; color: #dcdde1"> <span>
 							<i class="fa-solid fa-money-check-dollar fs-6 px-1"></i>
-					</span> Payments
-            </a> <a href="#"
+					</span> Giấy Phép
+            </a> <a href="/admin/voucher/hien-thi"
                     class="list-group-item list-group-item-action border-0  "
                     style="background-color: #0a3d62; color: #dcdde1"> <span>
 							<i class="fa-solid fa-arrow-down-9-1 fs-6 px-1"></i>
-					</span> Sale off
-            </a> <a href="/admin/orders/index"
+					</span> Voucher
+            </a> <a href="/admin/ban-quyen/hien-thi"
                     class="list-group-item list-group-item-action border-0  "
                     style="background-color: #0a3d62; color: #dcdde1"> <span><i
-                    class="fa-solid fa-truck-fast fs-6 px-1"></i></span> Orders
-            </a> <a href="/admin/order-details/index"
+                    class="fa-solid fa-truck-fast fs-6 px-1"></i></span> Bản Quyền
+            </a> <a href="/admin/hoa-don-chi-tiet/hien-thi"
                     class="list-group-item list-group-item-action border-0  "
                     style="background-color: #0a3d62; color: #dcdde1"> <span><i
-                    class="fa-solid fa-calendar-check fs-6 px-1"></i></span> Order details
+                    class="fa-solid fa-calendar-check fs-6 px-1"></i></span> Hóa Đơn Chi Tiết
             </a>
                 <p class="text-secondary fw-bold">Extras</p>
-                <a href="#"
+                <a href="/admin/tac-gia/hien-thi" class="list-group-item list-group-item-action border-0"
+                   style="background-color: #0a3d62; color: #dcdde1"> <span><i
+                        class="fa-solid fa-gauge-high fs-6 px-1"></i></span> Tác Giả
+                </a> <a href="/admin/nha-cung-cap/hien-thi"
+                        class="list-group-item list-group-item-action border-0"
+                        style="background-color: #0a3d62; color: #dcdde1"> <span><i
+                    class="fa-solid fa-user fs-6 px-1"></i></span> Nhà Cung Cấp
+            </a> <a href="/admin/nha-xuat-ban/hien-thi"
+                    class="list-group-item list-group-item-action border-0 "
+                    style="background-color: #0a3d62; color: #dcdde1"> <span><i
+                    class="fa-solid fa-cart-shopping fs-6 px-1"></i></span> Nhà Xuất Bản
+            </a><a href="/admin/the-loai/hien-thi"
                    class="list-group-item list-group-item-action border-0 "
                    style="background-color: #0a3d62; color: #dcdde1"> <span><i
-                        class="fa-solid fa-message fs-6 px-1"></i></span> Feedbacks
-                </a> <a href="#"
-                        class="list-group-item list-group-item-action border-0 "
-                        style="background-color: #0a3d62; color: #dcdde1"> <span><i
-                    class="fa-solid fa-gear fs-6 px-1"></i></span> Settings
+                    class="fa-solid fa-cart-shopping fs-6 px-1"></i></span> Thể Loại
             </a>
             </div>
         </div>
@@ -80,13 +88,6 @@
             <nav class="navbar navbar-expand-lg shadow-sm"
                  style="background-color: #ffffff">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Navbar w/ text</a>
-                    <button class="navbar-toggler" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#navbarText"
-                            aria-controls="navbarText" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link active"
@@ -108,14 +109,7 @@
                     </div>
                 </div>
             </nav>
-            <div class="bg-light p-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Categories</li>
-                    </ol>
-                </nav>
-            </div>
+
             <div class="px-4 p-3">
                 <div class="row">
                     <div class="col-3">
@@ -135,7 +129,7 @@
                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/admin/add" method="post">
+                                        <form action="/admin/san-pham/add" method="post">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label>Tên Nhà Cung Cấp</label>
@@ -146,7 +140,17 @@
                                                         </c:forEach>
                                                     </select>
                                                 </div>
-                                                <button>+</button>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>Tên Nhà Xuất Bản</label>
+                                                    <br>
+                                                    <select name="tenNhaXuatBan">
+                                                        <c:forEach items="${listNXB}" var="l">
+                                                            <option value="${l.idNhaXuatBan}">${l.ten}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
@@ -158,33 +162,26 @@
                                                         </c:forEach>
                                                     </select>
                                                 </div>
-                                                <button>+</button>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label>Tên Tác Giả</label>
-                                                    <br>
-                                                    <select name="tenTacGia">
-                                                        <c:forEach items="${listTG}" var="l">
-                                                            <option value="${l.idTacGia}">${l.hoVaTen}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                                <button>+</button>
                                             </div>
                                             <div class="row">
                                                 <div class="col-8">
-                                                    <label>hình ảnh</label>
+                                                    <label>Thể loại</label>
                                                     <br>
-                                                    <select name="img">
-                                                        <c:forEach items="${listImg}" var="l">
-                                                            <option value="${l.id}">${l.id}</option>
+                                                    <select name="theLoai">
+                                                        <c:forEach items="${listTl}" var="l">
+                                                            <option value="${l.idTheLoai}">${l.ten}</option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-12">
+                                                    <label>Link Ảnh</label>
+                                                    <input type="text" class="form-control" name="linkAnh"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
                                                     <label>Tiêu Đề</label>
                                                     <input type="text" class="form-control" name="tieuDe"/>
                                                 </div>
@@ -238,25 +235,36 @@
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Descriptions</th>
-                                <th colspan="2">Action</th>
+                                <th>Mã Sách</th>
+                                <th>Tên Nhà Cung Cấp</th>
+                                <th>Tên Tác Giả</th>
+                                <th>Tên Nhà Xuất Bản</th>
+                                <th>Tên Thể Loại</th>
+                                <th>Ảnh Sách</th>
+                                <th>Tiêu Đề</th>
+                                <th>Ngày Sản Xuất</th>
+                                <th>Giá Nhập</th>
+                                <th>Giá Bán</th>
+                                <th>Số Lượng</th>
+                                <th>Trạng Thái</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <c:forEach items="${ list }" var="l">
                                 <tr>
-                                    <td>${l.idSach}</td>
+                                    <td>S${l.idSach}</td>
                                     <td>${l.nhaCungCap.ten}</td>
                                     <td>${l.tacGia.hoVaTen}</td>
-                                    <td><img src="${l.images.image}" height="100px" width="100px"></td>
                                     <td>${l.nhaXuatBan.ten}</td>
-                                    <td>${l.ngaySatBan}</td>
+                                    <td>${l.theLoai.ten}</td>
+                                    <td><img src="${l.fileAnh}" height="100px" width="100px"></td>
+                                    <td>${l.tieuDe}</td>
+                                    <td>${l.ngayXuatBan}</td>
                                     <td>${l.giaNhap}</td>
                                     <td>${l.giaBan}</td>
                                     <td>${l.soLuong}</td>
-                                    <td>${l.trangThai}</td>
+                                    <td>${l.trangThai==0?"Hết Hàng":"Còn Hàng"}</td>
                                     <td>
                                         <button class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalUpdate_${l.idSach}">
@@ -277,7 +285,10 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-
+                                                        <p>Warning : Bạn Có Muốn Sửa Không !</p>
+                                                        <a role="button"
+                                                           href="/admin/san-pham/viewUpdate?id=${l.idSach}"
+                                                           class="btn btn-danger w-100 "> Update </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -303,10 +314,9 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body" style="background-color: #fff2df">
-                                                        <p>Warning : You are trying a category. This
-                                                            category will be permanently deleted !</p>
+                                                        <p>Warning : Bạn Có Muốn Xóa Sản Phẩm Này Không !</p>
                                                         <a role="button"
-                                                           href="/admin/categories/delete/${l.idSach}"
+                                                           href="/admin/san-pham/delete?id=${l.idSach}"
                                                            class="btn btn-danger w-100 "> Delete </a>
                                                     </div>
                                                 </div>

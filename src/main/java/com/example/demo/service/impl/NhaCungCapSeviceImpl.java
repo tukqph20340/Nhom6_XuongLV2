@@ -19,12 +19,12 @@ public class NhaCungCapSeviceImpl implements NhaCungCapSevice {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 
     @Override
-    public NhaCungCap detail(Integer id) {
+    public NhaCungCap detail(Long id) {
         return repository.getById(id);
     }
 

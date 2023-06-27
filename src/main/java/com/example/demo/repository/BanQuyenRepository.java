@@ -1,4 +1,8 @@
 package com.example.demo.repository;
 
-public interface BanQuyenRepository {
+import com.example.demo.model.BanQuyen;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+@Repository
+public interface BanQuyenRepository extends JpaRepository<BanQuyen ,Long> {
 }

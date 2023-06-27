@@ -33,16 +33,6 @@ public class Voucher {
     @Column(name = "id_voucher")
     private Long idVoucher;
 
-    @ManyToOne
-    @JoinColumn(name = "id_khach_hang")
-    private KhachHang khachHang;
-
-    @ManyToOne
-    @JoinColumn(name = "id_hoa_don")
-    private HoaDon hoaDon;
-
-    @Column(name = "ma_voucher")
-    private String ma;
 
     @Column(name = "gia_tri_giam")
     private BigDecimal giaTriGiam;

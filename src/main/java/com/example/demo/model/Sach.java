@@ -36,12 +36,15 @@ public class Sach {
     private TacGia tacGia;
 
     @ManyToOne
-    @JoinColumn(name = " id_img")
-    private Images images;
+    @JoinColumn(name = " id_the_loai")
+    private TheLoai theLoai;
 
     @ManyToOne
     @JoinColumn(name = " id_nxb")
     private NhaXuatBan nhaXuatBan;
+
+    @Column(name = "file_anh")
+    private String fileAnh;
 
     @Column(name = "tieu_de")
     private String tieuDe;
@@ -49,7 +52,7 @@ public class Sach {
 
 
     @Column(name = "ngay_xuat_ban")
-    private String ngaySatBan;
+    private String ngayXuatBan;
 
     @Column(name = "gia_nhap")
     private Double giaNhap;

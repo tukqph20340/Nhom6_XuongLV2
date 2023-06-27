@@ -26,8 +26,6 @@ public class NhaXuatBan {
     @Column(name = "id_nxb")
     private Long idNhaXuatBan;
 
-    @Column(name = "ma")
-    private String ma;
 
     @Column(name = "ten")
     private String ten;

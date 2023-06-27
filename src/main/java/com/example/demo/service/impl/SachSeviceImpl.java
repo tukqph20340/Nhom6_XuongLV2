@@ -19,12 +19,12 @@ public class SachSeviceImpl implements SachSevice {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 
     @Override
-    public Sach detail(Integer id) {
+    public Sach detail(Long id) {
         return repository.getById(id);
     }
 

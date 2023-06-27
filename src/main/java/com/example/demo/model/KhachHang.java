@@ -28,8 +28,6 @@ public class KhachHang {
     @Column(name = "id_khach_hang")
     private Long idKhachHang;
 
-    @Column(name = "ma")
-    private String ma;
 
     @Column(name = "ho_va_ten")
     private String hoTen;

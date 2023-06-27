@@ -38,5 +38,5 @@ public class TaiKhoan {
     private String sdt;
 
     @Column(name = "nguoi_truy_cap")
-    private String nguoi_truy_cap;
+    private String nguoiTruyCap;
 }

@@ -21,12 +21,12 @@ public class TacGiaSeviceImpl implements TacGiaSevice {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 
     @Override
-    public TacGia detail(Integer id) {
+    public TacGia detail(Long id) {
         return repository.getById(id);
     }
 
