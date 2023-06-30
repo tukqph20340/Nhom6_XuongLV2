@@ -4,6 +4,9 @@ package com.example.demo.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -22,12 +25,14 @@ import lombok.ToString;
 @ToString
 public class GioHangChiTiet {
 
-    @EmbeddedId
-    GioHanChiTietID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_gio_hang_chi_tiet")
+    private Long idGioHangChiTiet;
 
     @ManyToOne
     @JoinColumn(name = "id_gio_hang", nullable = false, insertable = false, updatable = false)
-    private HoaDon hoaDon;
+    private GioHang gioHang;
 
     @ManyToOne
     @JoinColumn(name = "id_sach",nullable = false, insertable = false, updatable = false)
@@ -41,4 +46,11 @@ public class GioHangChiTiet {
 
     @Column(name = "trang_thai")
     private Integer trangThai;
+
+    public GioHangChiTiet(Sach sach, Double tongGiaTien, Integer soLuong, Integer trangThai) {
+        this.sach = sach;
+        this.tongGiaTien = tongGiaTien;
+        this.soLuong = soLuong;
+        this.trangThai = trangThai;
+    }
 }

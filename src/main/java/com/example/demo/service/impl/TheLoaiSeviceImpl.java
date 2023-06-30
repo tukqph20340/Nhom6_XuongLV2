@@ -21,12 +21,12 @@ public class TheLoaiSeviceImpl implements TheLoaiSevice {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 
     @Override
-    public TheLoai detail(Integer id) {
+    public TheLoai detail(Long id) {
         return repository.getById(id);
     }
 

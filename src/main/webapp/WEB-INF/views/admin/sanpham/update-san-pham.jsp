@@ -182,20 +182,26 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label>Giá Bán</label>
-                                <input type="number" class="form-control" name="giaBan" value="${detail.giaBan}"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
                                 <label>Giá Nhập</label>
                                 <input type="number" class="form-control" name="giaNhap" value="${detail.giaNhap}"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
+                                <label>Giá Bán</label>
+                                <input type="number" class="form-control" name="giaBan" value="${detail.giaBan}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
                                 <label>Số Lượng</label>
                                 <input type="number" class="form-control" name="soLuong" value="${detail.soLuong}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label>moTa</label>
+                                <input type="text" class="form-control" name="moTa" value="${detail.moTa}"/>
                             </div>
                         </div>
                         <div class="row">

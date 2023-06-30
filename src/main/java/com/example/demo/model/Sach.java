@@ -14,6 +14,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.io.Serializable;
 @Entity
 @Table(name = "sach")
 @Getter
@@ -21,7 +23,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Sach {
+public class Sach implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sach")
@@ -49,8 +51,6 @@ public class Sach {
     @Column(name = "tieu_de")
     private String tieuDe;
 
-
-
     @Column(name = "ngay_xuat_ban")
     private String ngayXuatBan;
 
@@ -63,7 +63,19 @@ public class Sach {
     @Column(name = "so_luong")
     private Integer soLuong;
 
+    public Sach(Long idSach, String fileAnh, String tieuDe, Double giaBan, Integer soLuong) {
+        this.idSach = idSach;
+        this.fileAnh = fileAnh;
+        this.tieuDe = tieuDe;
+        this.giaBan = giaBan;
+        this.soLuong = soLuong;
+    }
+
+    @Column(name = "mo_ta")
+    private String moTa;
 
     @Column(name = "trang_thai")
     private Integer trangThai;
+
+
 }

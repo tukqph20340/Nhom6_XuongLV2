@@ -194,20 +194,26 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <label>Giá Bán</label>
-                                                    <input type="number" class="form-control" name="giaBan"/>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
                                                     <label>Giá Nhập</label>
                                                     <input type="number" class="form-control" name="giaNhap"/>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
+                                                    <label>Giá Bán</label>
+                                                    <input type="number" class="form-control" name="giaBan"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
                                                     <label>Số Lượng</label>
                                                     <input type="number" class="form-control" name="soLuong"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>moTa</label>
+                                                    <input type="text" class="form-control" name="moTa"/>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -225,12 +231,51 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 offset-6">
-                        <a type="button" class="btn btn-primary"
-                           href="/admin/category/excel"> <i
-                                class="fa-solid fa-file-excel"></i> <span>Export to excel</span>
-                        </a>
-                    </div>
+                                        <div class="col-3 offset-6">
+                                            <button class="btn btn-info text-white" data-bs-toggle="modal"
+                                                    data-bs-target="#modaltk">Lọc
+                                            </button>
+                                            <!-- Modal add -->
+                                            <div class="modal fade" id="modaltk" data-bs-backdrop="static"
+                                                 data-bs-keyboard="false" tabindex="-1"
+                                                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel"> </h5>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="/admin/san-pham/tim-kiem" method="get">
+                                                                <div class="row">
+                                                                        <div class="col-12">
+                                                                            <label> Id Sách </label>
+                                                                            <input type="text" class="form-control" name="idSach"/>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <label>Tên Sách</label>
+                                                                        <input type="text" class="form-control" name="ten"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <div class="row mt-4" style="justify-content: center">
+                                                                            <button class="btn btn-success col-1 m-3" type="submit">
+                                                                                Tìm Kiếm
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                     <div class="table-responsive mt-5" style="overflow-x: auto">
                         <table class="table table-bordered">
                             <thead>
@@ -246,12 +291,13 @@
                                 <th>Giá Nhập</th>
                                 <th>Giá Bán</th>
                                 <th>Số Lượng</th>
+                                <th>Mô Tả</th>
                                 <th>Trạng Thái</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${ list }" var="l">
+                            <c:forEach items="${ list.content}" var="l">
                                 <tr>
                                     <td>S${l.idSach}</td>
                                     <td>${l.nhaCungCap.ten}</td>
@@ -264,6 +310,7 @@
                                     <td>${l.giaNhap}</td>
                                     <td>${l.giaBan}</td>
                                     <td>${l.soLuong}</td>
+                                    <td>${l.moTa}</td>
                                     <td>${l.trangThai==0?"Hết Hàng":"Còn Hàng"}</td>
                                     <td>
                                         <button class="btn btn-primary" data-bs-toggle="modal"
@@ -333,12 +380,12 @@
 
                     <div class="row">
                         <ul class="pagination justify-content-center">
-                            <%--                            <c:forEach var="index" begin="0" end="${ data.totalPages - 1 }">--%>
-                            <%--                                <li class="page-item mx-1"><a--%>
-                            <%--                                        class="page-link ${ index==page?'bg-black text-white':'' }"--%>
-                            <%--                                        href="/admin/categories/index?page=${ index }">${ index + 1 }</a>--%>
-                            <%--                                </li>--%>
-                            <%--                            </c:forEach>--%>
+                            <c:forEach var="index" begin="0" end="${ list.totalPages - 1 }">
+                                <li class="page-item mx-1"><a
+                                        class="page-link ${ index==page?'bg-black text-white':'' }"
+                                        href="/admin/san-pham/hien-thi?page=${ index }">${ index + 1 }</a>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
