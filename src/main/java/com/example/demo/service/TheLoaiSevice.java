@@ -7,8 +7,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.ArrayList;
 public interface TheLoaiSevice {
     ArrayList<TheLoai> getAll();
-    void delete(Integer id);
-    TheLoai detail(Integer id);
+    void delete(Long id);
+    TheLoai detail(Long id);
     TheLoai add(TheLoai theLoai);
     TheLoai update(TheLoai theLoai);
     Page<TheLoai> phanTrang(Pageable pageable);

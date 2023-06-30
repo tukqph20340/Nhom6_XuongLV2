@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 @Service
 public class SachSeviceImpl implements SachSevice {
     @Autowired
@@ -16,6 +17,12 @@ public class SachSeviceImpl implements SachSevice {
     @Override
     public ArrayList<Sach> getAll() {
         return (ArrayList<Sach>) repository.findAll();
+    }
+
+    @Override
+    public ArrayList<Sach> timKiem(Long id ,String td) {
+
+        return repository.findByIdSachOrTieuDe(id,td);
     }
 
     @Override
@@ -42,4 +49,6 @@ public class SachSeviceImpl implements SachSevice {
     public Page<Sach> phanTrang(Pageable pageable) {
         return repository.findAll(pageable);
     }
+
+
 }

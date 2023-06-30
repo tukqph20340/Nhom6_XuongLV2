@@ -1,16 +1,21 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.HoaDonChiTiet;
 import com.example.demo.model.NhaCungCap;
 import com.example.demo.model.NhaXuatBan;
 import com.example.demo.model.Sach;
 import com.example.demo.model.TacGia;
 import com.example.demo.model.TheLoai;
+import com.example.demo.service.HoaDonChiTietSevice;
 import com.example.demo.service.NhaCungCapSevice;
 import com.example.demo.service.NhaXuatBanSevice;
 import com.example.demo.service.SachSevice;
 import com.example.demo.service.TacGiaSevice;
 import com.example.demo.service.TheLoaiSevice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,14 +46,18 @@ public class SachController {
     @Autowired
     TheLoaiSevice theLoaiSevice;
 
+    @Autowired
+    HoaDonChiTietSevice hoaDonChiTietSevice;
+
 
     @GetMapping("san-pham/hien-thi")
-    public String viewAdd(Model model) {
+    public String viewAdd(Model model,@RequestParam(defaultValue = "0", name = "page") Integer number) {
         ArrayList<TacGia> listTG = tacGiaSevice.getAll();
         ArrayList<NhaCungCap> listNCC = nhaCungCapS.getAll();
         ArrayList<NhaXuatBan> listNXB = nhaXuatBanSevice.getAll();
         ArrayList<TheLoai> listTL = theLoaiSevice.getAll();
-        ArrayList<Sach> list = sevice.getAll();
+        Pageable pageable = PageRequest.of(number, 4);
+        Page<Sach> list = sevice.phanTrang(pageable);
         model.addAttribute("list", list);
         model.addAttribute("listTG", listTG);
         model.addAttribute("listNCC", listNCC);
@@ -91,6 +100,7 @@ public class SachController {
             , @RequestParam("giaBan") Double giaBan
             , @RequestParam("giaNhap") Double giaNhap
             , @RequestParam("soLuong") Integer soLuong
+            , @RequestParam("moTa") String moTa
     ) {
         if (soLuong > 0) {
             Sach sach = new Sach();
@@ -119,6 +129,7 @@ public class SachController {
             sach.setGiaBan(giaBan);
             sach.setGiaNhap(giaNhap);
             sach.setSoLuong(soLuong);
+            sach.setMoTa(moTa);
             sach.setTrangThai(1);
             sevice.add(sach);
             return "redirect:/admin/san-pham/hien-thi";
@@ -148,6 +159,7 @@ public class SachController {
             sach.setGiaBan(giaBan);
             sach.setGiaNhap(giaNhap);
             sach.setSoLuong(soLuong);
+            sach.setMoTa(moTa);
             sach.setTrangThai(0);
             sevice.add(sach);
             return "redirect:/admin/san-pham/hien-thi";
@@ -168,6 +180,7 @@ public class SachController {
             , @RequestParam("giaBan") Double giaBan
             , @RequestParam("giaNhap") Double giaNhap
             , @RequestParam("soLuong") Integer soLuong
+            , @RequestParam("moTa") String moTa
     ) {
         if (soLuong > 0) {
             Sach sach = sevice.detail(id);
@@ -196,6 +209,7 @@ public class SachController {
             sach.setGiaBan(giaBan);
             sach.setGiaNhap(giaNhap);
             sach.setSoLuong(soLuong);
+            sach.setMoTa(moTa);
             sach.setTrangThai(1);
             sevice.add(sach);
             return "redirect:/admin/san-pham/hien-thi";
@@ -225,6 +239,7 @@ public class SachController {
             sach.setGiaBan(giaBan);
             sach.setGiaNhap(giaNhap);
             sach.setSoLuong(soLuong);
+            sach.setMoTa(moTa);
             sach.setTrangThai(0);
             sevice.add(sach);
             return "redirect:/admin/san-pham/hien-thi";
@@ -421,6 +436,82 @@ public class SachController {
         return "redirect:/admin/nha-xuat-ban/hien-thi";
 
     }
+    @GetMapping("the-loai/hien-thi")
+    public String theLoai(Model model) {
+        ArrayList<TheLoai> list = theLoaiSevice.getAll();
+
+        model.addAttribute("list", list);
+
+        return "/admin/theloai/the-loai";
+    }
+
+    @GetMapping("the-loai/delete")
+    public String theLoaideleteTG(Model model, @RequestParam("id") Long id) {
+        theLoaiSevice.delete(id);
+        return "redirect:/admin/the-loai/hien-thi";
+    }
+
+    @GetMapping("the-loai/viewUpdate")
+    public String theLoaiUpdatetg(Model model, @RequestParam("id") Long id) {
+
+        TheLoai detail = theLoaiSevice.detail(id);
+        model.addAttribute("detail", detail);
+        return "/admin/theloai/update-the-loai";
+    }
+
+    @PostMapping("the-loai/add")
+    public String theLoaiadd(Model model
+            , @RequestParam("ten") String ten
 
 
-}
+    ) {
+
+
+        TheLoai tg = new TheLoai();
+        tg.setTen(ten);
+        theLoaiSevice.add(tg);
+        return "redirect:/admin/the-loai/hien-thi";
+
+    }
+
+
+    @PostMapping("the-loai/update")
+    public String theLoaiCapupdate(Model model,
+                                      @RequestParam("id") Long id
+            , @RequestParam("ten") String ten
+
+
+    ) {
+
+
+        TheLoai tg = theLoaiSevice.detail(id);
+        tg.setTen(ten);
+
+        theLoaiSevice.add(tg);
+        return "redirect:/admin/the-loai/hien-thi";
+
+    }
+
+    @GetMapping("hoa-don-chi-tiet/hien-thi")
+    public String hoaDonChiTiet(Model model) {
+        ArrayList<HoaDonChiTiet> list = hoaDonChiTietSevice.getAll();
+
+        model.addAttribute("list", list);
+
+        return "/admin/hoadonchitiet/hoa-don-chi-tiet";
+    }
+
+    @GetMapping("san-pham/tim-kiem")
+    public String timKiem(Model model,@RequestParam("idSach") String id,
+                          @RequestParam("ten") String ten) {
+
+             if(id.isEmpty() && ten.isEmpty()){
+                 return "redirect:/admin/san-pham/hien-thi";
+             }
+             ArrayList<Sach> list = sevice.timKiem(Long.valueOf(id),ten);
+             model.addAttribute("list", list);
+             return "/admin/sanpham/tim-kiem";
+        }
+    }
+
+

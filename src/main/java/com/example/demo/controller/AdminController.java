@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 @Controller
 @RequestMapping("/admin/")
@@ -258,7 +259,21 @@ public class AdminController {
                               @RequestParam("soGiayPhep") Integer soGiayPhep
 
     ) {
-        if (soGiayPhep > 0) {
+
+        if (soGiayPhep < 0) {
+           model.addAttribute("loi","Số Không Được Nhỏ Hơn 0");
+            ArrayList<GiayPhep> listNV = seviceGP.getAll();
+            model.addAttribute("list", listNV);
+            return "/admin/giayphep/giay-phep";
+        }
+        else if(soGiayPhep < 1) {
+            GiayPhep gp = new GiayPhep();
+            gp.setNgayHetHan(ngayHetHan);
+            gp.setSoGiayPhep(soGiayPhep);
+            gp.setTrangThai(0);
+            seviceGP.add(gp);
+            return "redirect:/admin/giay-phep/hien-thi";
+        }else if(ngayHetHan.after(new java.util.Date())) {
             GiayPhep gp = new GiayPhep();
             gp.setNgayHetHan(ngayHetHan);
             gp.setSoGiayPhep(soGiayPhep);
@@ -283,7 +298,21 @@ public class AdminController {
                                  @RequestParam("soGiayPhep") Integer soGiayPhep
 
     ) {
-        if (soGiayPhep > 0) {
+
+        if (soGiayPhep < 0) {
+            model.addAttribute("loi","Số Không Được Nhỏ Hơn 0");
+            ArrayList<GiayPhep> listNV = seviceGP.getAll();
+            model.addAttribute("list", listNV);
+            return "/admin/giayphep/update-giay-phep";
+        }
+        else if(soGiayPhep < 1) {
+            GiayPhep gp = seviceGP.detail(id);
+            gp.setNgayHetHan(ngayHetHan);
+            gp.setSoGiayPhep(soGiayPhep);
+            gp.setTrangThai(0);
+            seviceGP.add(gp);
+            return "redirect:/admin/giay-phep/hien-thi";
+        }else if(ngayHetHan.after(new java.util.Date())) {
             GiayPhep gp = seviceGP.detail(id);
             gp.setNgayHetHan(ngayHetHan);
             gp.setSoGiayPhep(soGiayPhep);
@@ -417,7 +446,7 @@ public class AdminController {
                               @RequestParam("ngayHetHan") Date ngayHetHan
 
 
-                              ) {
+    ) {
 
         BanQuyen bq = new BanQuyen();
         Sach s = new Sach();
@@ -473,9 +502,20 @@ public class AdminController {
         return "redirect:/admin/ban-quyen/hien-thi";
 
 
-
     }
 
+    public static void main(String[] args) {
+        SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+        String ngay = "2023-06-25";
+        Date date = Date.valueOf(ngay);
 
+
+        if (date.after(new java.util.Date())){
+        System.out.println("Đã Quá Ngày Hiện Tại" + date);
+
+    } else {
+            System.out.println("Chưa Quá Ngày" + date);
+        }
     }
+}
 

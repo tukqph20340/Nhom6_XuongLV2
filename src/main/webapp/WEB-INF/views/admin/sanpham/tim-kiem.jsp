@@ -129,21 +129,93 @@
                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/admin/giay-phep/add" method="post">
-
+                                        <form action="/admin/san-pham/add" method="post">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <label>Ngày Hết Hạn</label>
-                                                    <input type="date" class="form-control" name="ngayHetHan"/>
+                                                    <label>Tên Nhà Cung Cấp</label>
+                                                    <br>
+                                                    <select name="tenNhaCungCap">
+                                                        <c:forEach items="${listNCC}" var="l">
+                                                            <option value="${l.idNhaCungCap}">${l.ten}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <label>Số Giấy Phép</label>
-                                                    <input type="number" class="form-control" name="soGiayPhep"/>${loi}
+                                                    <label>Tên Nhà Xuất Bản</label>
+                                                    <br>
+                                                    <select name="tenNhaXuatBan">
+                                                        <c:forEach items="${listNXB}" var="l">
+                                                            <option value="${l.idNhaXuatBan}">${l.ten}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                             </div>
-
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>Tên Tác Giả</label>
+                                                    <br>
+                                                    <select name="tenTacGia">
+                                                        <c:forEach items="${listTG}" var="l">
+                                                            <option value="${l.idTacGia}">${l.hoVaTen}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <label>Thể loại</label>
+                                                    <br>
+                                                    <select name="theLoai">
+                                                        <c:forEach items="${listTl}" var="l">
+                                                            <option value="${l.idTheLoai}">${l.ten}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>Link Ảnh</label>
+                                                    <input type="text" class="form-control" name="linkAnh"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>Tiêu Đề</label>
+                                                    <input type="text" class="form-control" name="tieuDe"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>Ngày Xuất Bản</label>
+                                                    <input type="date" class="form-control" name="ngayXuatBan"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>Giá Nhập</label>
+                                                    <input type="number" class="form-control" name="giaNhap"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>Giá Bán</label>
+                                                    <input type="number" class="form-control" name="giaBan"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>Số Lượng</label>
+                                                    <input type="number" class="form-control" name="soLuong"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>moTa</label>
+                                                    <input type="text" class="form-control" name="moTa"/>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="row mt-4">
@@ -159,31 +231,93 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-3 offset-6">
+                        <button class="btn btn-info text-white" data-bs-toggle="modal"
+                                data-bs-target="#modaltk">Lọc
+                        </button>
+                        <!-- Modal add -->
+                        <div class="modal fade" id="modaltk" data-bs-backdrop="static"
+                             data-bs-keyboard="false" tabindex="-1"
+                             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel"> </h5>
+                                        <button type="button" class="btn-close"
+                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/admin/san-pham/tim-kiem" method="get">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label> Id Sách </label>
+                                                    <input type="text" class="form-control" name="idSach"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label>Tên Sách</label>
+                                                    <input type="text" class="form-control" name="ten"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="row mt-4" style="justify-content: center">
+                                                        <button class="btn btn-success col-1 m-3" type="submit">
+                                                            Tìm Kiếm
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="table-responsive mt-5" style="overflow-x: auto">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Ngày Hết Hạn</th>
-                                <th>Số Giấy Phép</th>
+                                <th>Mã Sách</th>
+                                <th>Tên Nhà Cung Cấp</th>
+                                <th>Tên Tác Giả</th>
+                                <th>Tên Nhà Xuất Bản</th>
+                                <th>Tên Thể Loại</th>
+                                <th>Ảnh Sách</th>
+                                <th>Tiêu Đề</th>
+                                <th>Ngày Sản Xuất</th>
+                                <th>Giá Nhập</th>
+                                <th>Giá Bán</th>
+                                <th>Số Lượng</th>
+                                <th>Mô Tả</th>
                                 <th>Trạng Thái</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${ list }" var="l">
+                            <c:forEach items="${ list}" var="l">
                                 <tr>
-                                    <td>GP${l.idGiayPhep}</td>
-                                    <td>${l.ngayHetHan}</td>
-                                    <td>${l.soGiayPhep}</td>
-                                    <td>${l.trangThai==0?"Đã Hết":"Còn"}</td>
+                                    <td>S${l.idSach}</td>
+                                    <td>${l.nhaCungCap.ten}</td>
+                                    <td>${l.tacGia.hoVaTen}</td>
+                                    <td>${l.nhaXuatBan.ten}</td>
+                                    <td>${l.theLoai.ten}</td>
+                                    <td><img src="${l.fileAnh}" height="100px" width="100px"></td>
+                                    <td>${l.tieuDe}</td>
+                                    <td>${l.ngayXuatBan}</td>
+                                    <td>${l.giaNhap}</td>
+                                    <td>${l.giaBan}</td>
+                                    <td>${l.soLuong}</td>
+                                    <td>${l.moTa}</td>
+                                    <td>${l.trangThai==0?"Hết Hàng":"Còn Hàng"}</td>
                                     <td>
                                         <button class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#modalUpdate_${l.idGiayPhep}">
+                                                data-bs-target="#modalUpdate_${l.idSach}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </button> <!-- Modal update -->
-                                        <div class="modal fade" id="modalUpdate_${l.idGiayPhep}"
+                                        <div class="modal fade" id="modalUpdate_${l.idSach}"
                                              data-bs-backdrop="static" data-bs-keyboard="false"
                                              tabindex="-1" aria-labelledby="staticBackdropLabel"
                                              aria-hidden="true">
@@ -200,7 +334,7 @@
                                                     <div class="modal-body">
                                                         <p>Warning : Bạn Có Muốn Sửa Không !</p>
                                                         <a role="button"
-                                                           href="/admin/giay-phep/viewUpdate?id=${l.idGiayPhep}"
+                                                           href="/admin/san-pham/viewUpdate?id=${l.idSach}"
                                                            class="btn btn-danger w-100 "> Update </a>
                                                     </div>
                                                 </div>
@@ -209,10 +343,10 @@
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#modalDelte_${l.idGiayPhep}">
+                                                data-bs-target="#modalDelte_${l.idSach}">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button> <!-- Modal delete -->
-                                        <div class="modal fade" id="modalDelte_${l.idGiayPhep}"
+                                        <div class="modal fade" id="modalDelte_${l.idSach}"
                                              data-bs-backdrop="static" data-bs-keyboard="false"
                                              tabindex="-1" aria-labelledby="staticBackdropLabel"
                                              aria-hidden="true">
@@ -227,9 +361,9 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body" style="background-color: #fff2df">
-                                                        <p>Warning : Bạn Có Muốn Xóa  Không !</p>
+                                                        <p>Warning : Bạn Có Muốn Xóa Sản Phẩm Này Không !</p>
                                                         <a role="button"
-                                                           href="/admin/giay-phep/delete?id=${l.idGiayPhep}"
+                                                           href="/admin/san-pham/delete?id=${l.idSach}"
                                                            class="btn btn-danger w-100 "> Delete </a>
                                                     </div>
                                                 </div>
@@ -244,16 +378,16 @@
                     </div>
 
 
-                    <div class="row">
-                        <ul class="pagination justify-content-center">
-                            <%--                            <c:forEach var="index" begin="0" end="${ data.totalPages - 1 }">--%>
-                            <%--                                <li class="page-item mx-1"><a--%>
-                            <%--                                        class="page-link ${ index==page?'bg-black text-white':'' }"--%>
-                            <%--                                        href="/admin/categories/index?page=${ index }">${ index + 1 }</a>--%>
-                            <%--                                </li>--%>
-                            <%--                            </c:forEach>--%>
-                        </ul>
-                    </div>
+<%--                    <div class="row">--%>
+<%--                        <ul class="pagination justify-content-center">--%>
+<%--                            <c:forEach var="index" begin="0" end="${ list.totalPages - 1 }">--%>
+<%--                                <li class="page-item mx-1"><a--%>
+<%--                                        class="page-link ${ index==page?'bg-black text-white':'' }"--%>
+<%--                                        href="/admin/san-pham/hien-thi?page=${ index }">${ index + 1 }</a>--%>
+<%--                                </li>--%>
+<%--                            </c:forEach>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
                 </div>
             </div>
         </div>

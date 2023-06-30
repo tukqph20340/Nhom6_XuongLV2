@@ -109,40 +109,75 @@
                     </div>
                 </div>
             </nav>
+
             <div class="px-4 p-3">
-                <div class="modal-body">
-                    <form action="/admin/giay-phep/update" method="post">
-                        <input type="hidden" class="form-control" name="id" value="${detail.idGiayPhep}"/>
-                        <div class="row">
-                            <div class="col-12">
-                                <label>Ngày Hết Hạn</label>
-                                <input type="date" class="form-control" name="ngayHetHan" value="${detail.ngayHetHan}"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label>Số Giấy Phép</label>
-                                <input type="number" class="form-control" name="soGiayPhep" value="${detail.soGiayPhep}"/>${loi}
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-3">
+                        <button class="btn btn-info text-white" data-bs-toggle="modal"
+                                data-bs-target="#modalAdd">Tìm Kiếm
+                        </button>
+                        <!-- Modal add -->
+                        <div class="modal fade" id="modalAdd" data-bs-backdrop="static"
+                             data-bs-keyboard="false" tabindex="-1"
+                             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                                        <button type="button" class="btn-close"
+                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/admin/hoa-don-chi-tiet/tim-kiem" method="post">
 
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row mt-4">
-                                    <button class="btn btn-success col-1 m-3" type="submit">
-                                        Update
-                                    </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+
+                    <div class="table-responsive mt-5" style="overflow-x: auto">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Mã Hóa Đơn</th>
+                                <th>Mã Sách</th>
+                                <th>Số Lượng</th>
+                                <th>Tổng Giá</th>
+                                <th>Trạng Thái</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${ list }" var="l">
+                                <tr>
+                                    <td>HD${l.hoaDon.idHoaDon}</td>
+                                    <td>S${l.sach.idSach}</td>
+                                    <td>${l.tongHoaDon}</td>
+                                    <td>${l.soLuong}</td>
+                                    <td>${l.trangThai}</td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="row">
+                        <ul class="pagination justify-content-center">
+                            <%--                            <c:forEach var="index" begin="0" end="${ data.totalPages - 1 }">--%>
+                            <%--                                <li class="page-item mx-1"><a--%>
+                            <%--                                        class="page-link ${ index==page?'bg-black text-white':'' }"--%>
+                            <%--                                        href="/admin/categories/index?page=${ index }">${ index + 1 }</a>--%>
+                            <%--                                </li>--%>
+                            <%--                            </c:forEach>--%>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 <script>
     var option = {
